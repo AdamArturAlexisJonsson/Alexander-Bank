@@ -12,7 +12,7 @@ namespace Bank
 
         static void Main(string[] args)
         {
-
+            //knas
             Console.WriteLine("Vällkommen!");
             Console.WriteLine("");
             Console.WriteLine("Ange vilket av följande alternativ du önskar göra");
