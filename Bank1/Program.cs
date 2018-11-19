@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Bank
 {
     class Program
     {
-        static List<Customer> customerList = new List<Customer>();
+        public static List<Customer> customerList = new List<Customer>();
+        public static string filename = @"C:\Users\alexlind\source\repos\Bank1\Bank1\test.txt";
 
         static void Main(string[] args)
         {
+            //string filename = @"C:\Users\alexlind\source\repos\Bank1\Bank1\test.txt";
+            //ReadFile(filename);
+
+
             //knas
             Console.WriteLine("Vällkommen!");
             Console.WriteLine("");
@@ -55,6 +61,9 @@ namespace Bank
            
                     case 7:
                         Console.WriteLine("Case 7");
+                        //WriteFile(filename);
+                       // string save = customerInfo;
+                        //System.IO.File.WriteAllText(@"C: \Users\alexlind\source\repos\Bank1\Bank1\test.txt");
                         break;
 
                     default:
@@ -68,10 +77,23 @@ namespace Bank
                     }
 
                 catch(FormatException){
-                    Console.WriteLine("ERROERER");
+                    Console.WriteLine("ERROR");
                      }
             }
 
+        }
+
+        public static void WriteFile(string filename, string name)
+        {
+            File.WriteAllText(filename, name);
+        }
+        public static void ReadFile(string filename, string name)
+        {
+            string readFile = File.ReadAllText(filename);
+            foreach (var customer in customerList)
+            {
+                Console.WriteLine(readFile);
+            }
         }
 
         public static void AddCustomer()        // Lägger till en customer med namn i listan med customers
@@ -81,6 +103,7 @@ namespace Bank
             Customer Customer = new Customer();
             Customer.name = newCustomer;
             customerList.Add(Customer);
+            WriteFile(filename, Customer.name);
 
         }
 
